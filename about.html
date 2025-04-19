@@ -1,0 +1,1059 @@
+<!-- Subscribe Tamzidan Madiyin di YouTube -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link ke Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Link ke library animasi AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init({ offset: 0 });</script>
+
+    <!-- CSS internal untuk styling halaman -->
+    <style>
+        /* 
+          Import Google Font Poppins
+          Font weight yang diimport: 100, 200, 300, 400, 500, 600 
+        */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+        /* Reset CSS dan pengaturan default */
+        * 
+
+        /* 
+          Styling untuk body
+          - Menggunakan background image
+          - Cover seluruh viewport
+          - Mencegah horizontal scroll
+        */
+        body {
+            font-family: "Poppins", sans-serif; /* Menambahkan font default */
+            width: 100%;
+            min-height: 100vh;
+            background-image: url("./img/background.jpg");
+            background-size: cover;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 
+          Navbar styling
+          - Fixed height 10vh
+          - Posisi relative untuk positioning yang tepat
+          - z-index tinggi agar selalu di atas konten lain
+        */
+        nav {
+            width: 100%;
+            height: 10vh;
+            position: sticky;
+            position: relative;
+            /* Ubah dari sticky ke relative */
+            z-index: 1000;
+            /* Tambahkan z-index tinggi untuk nav */
+        }
+
+        /* Container untuk konten navbar */
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /* 
+          Logo styling
+          - Warna putih dengan ukuran 2rem
+          - Text shadow untuk efek glow pada span 
+        */
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: rgb(58, 211, 3);
+            text-shadow: 0 0 10px rgb(58, 211, 3);
+        }
+
+        /* 
+          Hamburger dan Cancel button styling
+          - Hanya muncul di mobile view
+          - Posisi absolute di kanan atas
+        */
+        .hamburg,
+        .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: white;
+            display: none;
+            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+        }
+
+        /* 
+          Navigation links container
+          - Flex layout untuk alignment horizontal
+        */
+        .nav-container .links {
+            display: flex;
+        }
+
+        /* 
+          Individual navigation links
+          - Spacing dan styling untuk tiap link
+          - Hover effect dengan border bottom
+        */
+        .nav-container .links a {
+            font-size: 1.2rem;
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 550;
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a:hover {
+            color: rgb(58, 211, 3);
+            border-bottom: 2px solid rgb(58, 211, 3);
+        }
+
+        /* Styling untuk link aktif */
+        .nav-container .links .active {
+            color: rgb(58, 211, 3);
+            border-bottom: 2px solid rgb(58, 211, 3);
+        }
+
+        /* 
+          Dropdown menu untuk mobile view
+          - Fixed positioning dengan transform untuk animasi
+          - Backdrop filter untuk efek blur
+        */
+        .dropdown {
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(-500px);
+            width: 100%;
+            height: auto;
+            backdrop-filter: blur(4px) brightness(40%);
+            box-shadow: 0 0 20px black;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a {
+            display: flex;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a:hover {
+            background-color: rgb(58, 211, 3);
+        }
+
+        /* About Section Styles */
+        .about-container {
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content {
+            width: 80%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            /* box-shadow: 0 0 30px rgba(58, 211, 3, 0.3); */
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            color: rgb(58, 211, 3);
+            text-shadow: 0 0 10px rgb(58, 211, 3);
+            margin-bottom: 1rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgb(58, 211, 3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            color: rgb(58, 211, 3);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(58, 211, 3, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgb(58, 211, 3);
+            cursor: pointer;
+        }
+
+        .stat-item h3 {
+            color: rgb(58, 211, 3);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid fleksibel untuk berbagai ukuran layar */
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .content-card {
+            background: rgba(58, 211, 3, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .content-card:hover {
+            transform: scale(1.03) rotateZ(0.5deg);
+            box-shadow: 0 10px 25px rgba(58, 211, 3, 0.5);
+        }
+
+        .card-image {
+             width: 100%; /* Gambar kotak akan memiliki lebar 30% dari keseluruhan kotak */
+             margin-right: 1rem;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-image img:hover {
+        filter: brightness(1.1) contrast(1.2);
+        transition: 0.3s ease;
+        }
+
+        .card-info {
+            padding: 1.5rem;
+        }
+
+        .card-info h3 {
+            color: rgb(58, 211, 3);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-info p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-info .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Modal untuk gambar */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s ease;
+
+        }           
+        .image-modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            max-width: 80vw;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(58, 211, 3, 0.5);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .pop-animate {
+            opacity: 1;
+        }
+
+        .video-description {
+            background-color: rgba(58, 211, 3, 0.1);
+            padding: 0.8rem;
+            border-left: 3px solid rgb(58, 211, 3);
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        @keyframes slideFromLeft {
+          from 
+          {
+            transform: translateX(-100%) scale(0.8);
+            opacity: 0;
+          }
+          to 
+          {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideFromRight {
+          from 
+          {
+            transform: translateX(100%) scale(0.8);
+            opacity: 0;
+          }
+          to 
+          {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+          }
+        }
+
+        .modal-from-left {
+          animation: slideFromLeft 0.5s ease forwards;
+        }
+
+        .modal-from-right {
+          animation: slideFromRight 0.5s ease forwards;
+        }
+        .image-modal-close {
+              position: absolute;
+              top: 20px;
+              right: 40px;
+              font-size: 3rem;
+              color: white;
+              cursor: pointer;
+        }
+
+
+        .technology-tag {
+            background: rgba(58, 211, 3, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: rgb(58, 211, 3);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .technology-tag:hover {
+            background: rgba(58, 211, 3, 0.4);
+            transform: scale(1.1);
+        }
+        .back-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgb(58, 211, 3);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgb(45, 165, 2);
+            transform: translateY(-2px);
+        }
+
+        .award-icon {
+            font-size: 2rem;
+            color: rgb(58, 211, 3);
+            margin-bottom: 1rem;
+        }
+
+        .client-testimonial {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(58, 211, 3, 0.05);
+            border-radius: 10px;
+        }
+
+
+
+        @media (max-width: 884px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav .logo {
+                position: absolute;
+                top: 16px;
+                left: 15px;
+                font-size: 1.5rem;
+            }
+
+            .nav-container .links {
+                display: none;
+            }
+
+            .hamburg,
+            .cancel {
+                display: block;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .about-container {
+                padding: 1rem;
+            }
+
+            .about-content {
+                width: 95%;
+                /* Memperbesar width untuk layar kecil */
+                padding: 1.5rem;
+            }
+
+            .about-header h1 {
+                font-size: 1.8rem;
+                /* Mengurangi ukuran judul */
+            }
+
+            .about-text h2 {
+                font-size: 1.4rem;
+                /* Mengurangi ukuran sub-judul */
+            }
+
+            .about-text p {
+                font-size: 0.9rem;
+                /* Mengurangi ukuran teks */
+                line-height: 1.4;
+            }
+
+            .about-image {
+                width: 100%;
+                max-height: 250px;
+                /* Membatasi tinggi gambar */
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                /* Tetap 2 kolom tapi lebih kecil */
+                gap: 0.8rem;
+            }
+
+            .stat-item {
+                padding: 0.8rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.2rem;
+                /* Mengurangi ukuran angka statistik */
+            }
+
+            .stat-item p {
+                font-size: 0.8rem;
+                /* Mengurangi ukuran teks statistik */
+            }
+
+            /* Menyesuaikan padding untuk link statistik */
+            .stat-item a {
+                padding: 0.5rem;
+                display: block;
+            }
+        }
+        .content-vertical {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 2rem 0;
+            }           
+            .vertical-card {
+                background: rgba(58, 211, 3, 0.1);
+                border-radius: 10px;
+                padding: 1.5rem;
+                border: 1px solid rgb(58, 211, 3);
+                color: white;
+                transition: all 0.3s ease;
+                width: 100%;
+            }
+
+            .vertical-card:hover {
+                 transform: translateY(-5px);
+                 box-shadow: 0 5px 15px rgba(58, 211, 3, 0.3);
+            }
+            .vertical-card h3 {
+                margin-bottom: 0.5rem;
+                color: rgb(58, 211, 3);
+            }
+            .vertical-card p {
+                font-size: 1rem;
+            }
+            .stat-item:hover {
+              transform: translateY(-8px);
+              transition: transform 0.3s ease;
+            }
+            .stat-item {
+              box-shadow: 0 0 10px rgba(58, 211, 3, 0.2);
+            }
+            .stat-item:hover {
+              box-shadow: 0 0 20px rgba(58, 211, 3, 0.5);
+            }
+
+
+    </style>
+    <title>About - Portfolio Website</title>
+</head>
+
+<body>
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImage">
+    </div>
+    <!-- Navigasi -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                RAHMA <span>OKTOYADI</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a
+                        href="index.html">Home</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a
+                        href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a
+                        href="skill.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a
+                        href="service.html">Service</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a
+                        href="contact.html">Contact</a></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html">Skills</a>
+                <a href="service.html">Service</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten utama halaman About -->
+    <div class="about-container">
+        <div class="about-content" id="aboutContent">
+            <!-- Bagian header --><div class="about-header" data-aos="fade-down" data-aos-duration="1500"><div class="about-header" data-aos="fade-down" data-aos-duration="1000">
+                <h1>Tentang saya</h1>
+            </div>
+
+            <!-- Grid untuk gambar dan teks deskripsi -->
+            <div class="about-grid">
+                <div class="about-image" data-aos="flip-left" data-aos-duration="1200">
+                    <img src="img/Yadi.jpg" alt="About Image">
+                </div>
+                <div class="about-text" data-aos="fade-up" data-aos-duration="1200">
+
+                    <h2>HALLO guysss?</h2>
+                    <p>Halo! Saya adalah mahasiswa Teknik Informatika di Universitas Riau, angkatan 2024. Saya memiliki minat yang besar dalam dunia teknologi dan pemrograman, khususnya dalam pengembangan perangkat lunak dan aplikasi web.</p>
+                    <p>Melalui website ini, saya ingin berbagi perjalanan belajar saya, proyek-proyek yang telah saya kerjakan, serta wawasan seputar dunia IT. Saya berharap dapat terhubung dengan individu dan komunitas yang memiliki minat serupa untuk saling berbagi pengetahuan dan pengalaman.</p>
+
+                    <div class="stats">
+                        <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200"
+                            onclick="showProjects()">
+                            <h3>1</h3>
+                            <p>Foto, Vidio & Animasi</p>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400"
+                            onclick="showExperience()">
+                            <h3>2</h3>
+                            <p>FONT</p>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="600"
+                            onclick="showClients()">
+                            <h3>3</h3>
+                            <p>Audio</p>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="800"
+                            onclick="showAwards()">
+                            <h3>4</h3>
+                            <p>Laporan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Link ke library animasi AOS -->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+        <!-- JavaScript untuk interaksi dan animasi halaman -->
+        <script>
+            
+
+            // Inisialisasi library AOS
+            AOS.init({ offset: 0 });
+
+            // Fungsi untuk menampilkan menu hamburger
+            function hamburg() {
+                const navbar = document.querySelector(".dropdown")
+                navbar.style.transform = "translateY(0px)"
+            }
+
+            // Fungsi untuk menyembunyikan menu hamburger
+            function cancel() {
+                const navbar = document.querySelector(".dropdown")
+                navbar.style.transform = "translateY(-500px)"
+            }
+
+            // Fungsi untuk menampilkan daftar Project
+            function showProjects() {
+                const aboutContent = document.getElementById('aboutContent');
+            
+                aboutContent.innerHTML = `
+                    <a href="about.html" class="back-button" onclick="restoreInitialContent()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                
+                    <div class="about-header" data-aos="fade-down" data-aos-duration="1500">
+                        <h1>Projek Saya</h1>
+                    </div>
+                
+                    <!-- Bagian Project Visual -->
+                    <div class="about-header" data-aos="fade-up" data-aos-duration="1000">
+                        <h2>🧩 Project Visual</h2>
+                    </div>
+                    <div class="content-grid" id="projectGrid"></div>
+                
+                    <!-- Bagian Video -->
+                    <div class="about-header" data-aos="fade-up" data-aos-duration="1000">
+                        <h2>🎥 Video Tugas</h2>
+                    </div>
+                    <div class="content-grid" id="videoGrid"></div>
+                `;
+                
+                // Generate isi grid gambar dan video
+                generateProjectCards();
+                generateProjectVideos();
+                AOS.refresh();
+            }
+
+            function generateProjectVideos() {
+                const videos = [
+                    { title: "Video 1 - Guitar.mp4", src: "videos/Guitar.mp4", type: "video/mp4", desc: "Format MP4 (MPEG-4 Part 14) adalah format file multimedia yang sangat populer dan banyak digunakan untuk menyimpan video, audio, gambar diam, dan subtitle dalam satu wadah. Format ini dikembangkan oleh Moving Picture Experts Group (MPEG) dan menjadi standar internasional untuk penyimpanan dan distribusi media digital " },
+                    { title: "Video 2 - Guitar.ogg", src: "videos/Guitar.ogg", type: "video/ogg", desc: "Format OGG adalah format kontainer multimedia terbuka yang dikembangkan oleh Xiph.Org Foundation. Format ini sering digunakan untuk menyimpan audio dan video, dengan codec populer seperti Vorbis untuk audio dan Theora untuk video. Namun, dukungan terhadap video OGG (OGV) di HTML5 terbatas dan semakin berkurang.​" },
+                    { title: "Video 3 - Guitar.webm", src: "videos/Guitar.webm", type: "video/webm", desc: "WebM adalah format video terbuka dan bebas royalti yang dikembangkan oleh Google pada tahun 2010. Dirancang khusus untuk penggunaan web, WebM menawarkan kompresi efisien dan kualitas tinggi, menjadikannya pilihan populer untuk streaming video di situs web dan aplikasi berbasis browser." },
+                    { title: "Animasi 2D", src: "videos/2D.mp4", type: "video/mp4", desc: "Animasi 2D merupakan bentuk animasi tradisional yang menampilkan gambar dalam dua dimensi, yaitu tinggi dan lebar. Teknik ini sering digunakan dalam kartun, iklan, dan video edukasi" },
+                    { title: "Animasi 3D", src: "videos/3D.mp4", type: "video/mp4", desc: "Animasi 3D menggunakan model tiga dimensi yang dibuat dengan perangkat lunak komputer. Teknik ini memungkinkan penciptaan karakter dan lingkungan yang realistis." },
+                    { title: "Animasi Stop-motion", src: "videos/Stop-motion.mp4", type: "video/mp4", desc: "Stop motion adalah teknik animasi yang melibatkan pengambilan gambar objek fisik yang digerakkan sedikit demi sedikit di antara setiap frame. Ketika gambar-gambar ini diputar secara berurutan, terciptalah ilusi gerakan." },
+                    { title: "Animasi Motion Grapich", src: "videos/Motion Grapich.mp4", type: "video/mp4", desc: "Motion graphics adalah animasi grafis yang digunakan untuk menyampaikan informasi atau pesan, sering kali dalam bentuk teks atau elemen desain lainnya yang bergerak. Teknik ini umum digunakan dalam video promosi, iklan, dan presentasi bisnis." },
+                    { title: "Animasi Typograpich", src: "videos/Typograpich.mp4", type: "video/mp4", desc: "Animasi tipografi merupakan pergerakan teks untuk mengekspresikan ide atau emosi. Teknik ini sering digunakan dalam video musik, iklan, dan presentasi untuk menarik perhatian audiens." },
+                    { title: "Animasi Hybrid", src: "videos/Hybrid.mp4", type: "video/mp4", desc: "Animasi hibrida menggabungkan berbagai teknik animasi, seperti 2D dan 3D, atau animasi dengan live-action, untuk menciptakan pengalaman visual yang kaya dan dinamis." },
+                    { title: "Animasi Claymation", src: "videos/claymation.mp4", type: "video/mp4", desc: "Claymation adalah bentuk animasi stop motion yang menggunakan model tanah liat atau plastisin. Karakter dan objek dibentuk dari tanah liat dan difoto frame demi frame untuk menciptakan gerakan." },
+                    { title: "Animasi Whiteboard", src: "videos/Whiteboard.mp4", type: "video/mp4", desc: "Animasi whiteboard menampilkan tangan yang menggambar ilustrasi di papan tulis secara real-time, biasanya disertai dengan narasi. Teknik ini efektif untuk video edukasi dan penjelasan konsep yang kompleks." },
+                    { title: "Animasi Cut-out", src: "videos/cut-out.mp4", type: "video/mp4", desc: "Animasi cut-out adalah bentuk dari animasi stop motion yang menggunakan potongan-potongan gambar, seperti kertas atau karton, yang dipindahkan secara manual untuk menciptakan gerakan." },
+                ];
+            
+                const videoGrid = document.getElementById('videoGrid');
+                videoGrid.innerHTML = videos.map((video, index) => `
+                    <div class="content-card" data-aos="fade-up">
+                        <div class="card-info">
+                            <h3>${video.title}</h3>
+                            <video controls width="100%">
+                                <source src="${video.src}" type="${video.type}">
+                                Browser Anda tidak mendukung tag video.
+                            </video>
+                            <div class="technologies" style="margin-top: 1rem;">
+                                <span class="technology-tag" onclick="toggleDescription(${index})">Detail</span>
+                            </div>
+                            <div id="desc-${index}" class="video-description" style="display: none; margin-top: 1rem;">
+                                ${video.desc}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            function toggleDescription(index) {
+                const desc = document.getElementById(`desc-${index}`);
+                if (desc.style.display === "none") {
+                    desc.style.display = "block";
+                } else {
+                    desc.style.display = "none";
+                }
+            }
+
+            // Fungsi untuk menampilkan daftar Experience
+            function showExperience() {
+                const aboutContent = document.getElementById('aboutContent');
+                aboutContent.innerHTML = `
+                    <a href="about.html" class="back-button" onclick="restoreInitialContent()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <div class="about-header" data-aos="fade-down" data-aos-duration="1500">
+                     <h1>Vidio Saya</h1>
+                    </div>
+                 <div class="content-vertical">
+                ${generateExperienceCards()}
+                </div>
+            `;
+                AOS.refresh();
+            }
+
+            // Fungsi untuk menampilkan daftar Clients
+            function showClients() {
+                const aboutContent = document.getElementById('aboutContent');
+                  aboutContent.innerHTML = `
+                      <a href="about.html" class="back-button" onclick="restoreInitialContent()">
+                          <i class="fas fa-arrow-left"></i> Back
+                      </a>
+                      <div class="about-header" data-aos="fade-down" data-aos-duration="1500">
+                          <h1>Audio Player Saya</h1>
+                      </div>
+                      <div class="content-grid">
+                        ${generateAudioUploaders()}
+                      </div>
+                  `;
+                AOS.refresh();
+            }
+            function generateAudioUploaders(count) {
+                 const audios = [
+                    { title: "Audio 1 - Format MP3", src: "audio/R.mp3", type: "audio/mp3", desc: "Format MP3 (MPEG-1 Audio Layer 3) adalah format file audio digital yang paling populer dan banyak digunakan di seluruh dunia. Dikembangkan oleh Moving Picture Experts Group (MPEG), MP3 menggunakan teknik kompresi lossy untuk mengurangi ukuran file audio tanpa mengorbankan kualitas suara secara signifikan.​" },
+                    { title: "Audio 2 - Format WAV", src: "audio/R.wav", type: "audio/wav", desc: "WAV (Waveform Audio File Format) adalah format file audio standar yang dikembangkan oleh IBM dan Microsoft pada tahun 1991. Format ini merupakan bagian dari spesifikasi RIFF (Resource Interchange File Format) dan dirancang untuk menyimpan data audio digital berkualitas tinggi. WAV sering digunakan dalam produksi musik, pengeditan audio, dan aplikasi multimedia lainnya.​" },
+                    { title: "Audio 3 - Format AAC", src: "audio/R.aac", type: "audio/aac", desc: "AAC (Advanced Audio Coding) adalah format kompresi audio digital yang dikembangkan oleh Moving Picture Experts Group (MPEG). Dirancang sebagai penerus MP3, AAC menawarkan kualitas suara yang lebih baik pada bitrate yang sama, menjadikannya pilihan utama untuk berbagai platform dan perangkat modern." },
+                    { title: "Audio 4 - Format FLAC", src: "audio/R.flac", type: "audio/flac", desc: "FLAC (Free Lossless Audio Codec) adalah format kompresi audio digital yang menyimpan data suara tanpa kehilangan kualitas asli. Berbeda dengan format lossy seperti MP3 atau AAC, FLAC mempertahankan seluruh detail audio, menjadikannya pilihan utama bagi para audiophile dan profesional audio..​." },
+                    { title: "Audio 5 - Format OGG", src: "audio/R.ogg", type: "audio/ogg", desc: "OGG adalah format kontainer multimedia terbuka dan bebas royalti yang dikembangkan oleh Xiph.Org Foundation. Format ini dapat menyimpan berbagai jenis data, meskipun paling sering digunakan untuk menyimpan audio terkompresi menggunakan codec seperti Vorbis atau Opus. ​" },
+                    { title: "Audio 5 - Format OPUS", src: "audio/R.opus", type: "audio/opus", desc: "Opus adalah format kompresi audio lossy yang dikembangkan oleh Xiph.Org Foundation dan distandarisasi oleh Internet Engineering Task Force (IETF). Dirilis pada tahun 2012, Opus dirancang untuk memberikan kualitas suara tinggi dengan latensi rendah, menjadikannya ideal untuk aplikasi komunikasi real-time seperti VoIP, konferensi video, dan streaming musik.n berbagai jenis data, meskipun paling sering digunakan untuk menyimpan audio terkompresi menggunakan codec seperti Vorbis atau Opus. ​" },
+                ];
+                return audios.map((audio, index) => `
+                     <div class="content-card" data-aos="fade-up">
+                         <div class="card-info">
+                             <h3>${audio.title}</h3>
+                             <audio controls style="width: 100%;">
+                                 <source src="${audio.src}" type="${audio.type}">
+                                 Browser tidak mendukung tag audio.
+                             </audio>
+                             <div class="technologies" style="margin-top: 1rem;">
+                                 <span class="technology-tag" onclick="toggleAudioDescription(${index})">Detail</span>
+                             </div>
+                             <div id="audio-desc-${index}" class="video-description" style="display: none; margin-top: 1rem;">
+                                 ${audio.desc}
+                             </div>
+                         </div>
+                     </div>
+                 `).join('');
+            }
+            function playAudio(event, index) {
+                const file = event.target.files[0];
+                const audioPlayer = document.getElementById(`audioPlayer${index}`);
+                    if (file) 
+                    {
+                        const audioURL = URL.createObjectURL(file);
+                        audioPlayer.src = audioURL;
+                        audioPlayer.style.display = "block";                  
+                    }
+            }
+            function toggleAudioDescription(index) {
+                const desc = document.getElementById(`audio-desc-${index}`);
+                desc.style.display = desc.style.display === "none" ? "block" : "none";
+            }
+
+
+
+            // Fungsi untuk menampilkan daftar Awards
+            function showAwards() {
+                const aboutContent = document.getElementById('aboutContent');
+                aboutContent.innerHTML = `
+                <a href="about.html" class="back-button" onclick="restoreInitialContent()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <div class="about-header" data-aos="fade-down" data-aos-duration="1500">
+                    <h1> TUGAS LAPORAN</h1>
+                </div>
+                <div class="content-grid">
+                    ${generateAwardCards()}
+                </div>
+            `;
+                AOS.refresh();
+            }
+
+            // Fungsi pembantu untuk menghasilkan kartu project
+            function generateProjectCards() {
+                const projects = [
+                    { title: "Format JPG", image: "img/3Y.jpg", description: "Format JPG menggunakan metode kompresi lossy, yang berarti mengurangi ukuran file dengan menghapus sebagian data gambar yang dianggap tidak terlalu penting. Hal ini memungkinkan ukuran file menjadi lebih kecil tanpa mengorbankan kualitas secara signifikan, terutama untuk fotografi digital dan grafis web. .", technologies: ["Detail"] },
+                    { title: "Format PNG", image: "img/Y.png", description: "Format gambar PNG (Portable Network Graphics) adalah format file gambar raster yang menggunakan kompresi lossless, artinya kualitas gambar tetap terjaga meskipun ukuran file dikompresi. Format ini dirancang sebagai pengganti format GIF dan mendukung berbagai fitur yang membuatnya populer, terutama dalam desain web dan grafis digital.", technologies: ["Detail"] },
+                    { title: "Format WEBP", image: "img/Y.webp", description: "WebP adalah format gambar yang memungkinkan ukuran file lebih kecil dibandingkan format tradisional seperti JPEG dan PNG, tanpa mengorbankan kualitas visual secara signifikan. Format ini dirancang untuk mempercepat waktu muat halaman dan menghemat bandwidth, sehingga sangat ideal untuk penggunaan di situs web.", technologies: ["Detail"] },
+                    { title: "Format BMP", image: "img/3Y.bmp", description: "Format gambar terkompresi, cocok untuk foto, ukuran file kecil, kualitas cukup baik.BMP adalah format gambar raster yang menyimpan data piksel secara langsung tanpa kompresi, meskipun beberapa varian mendukung kompresi lossless seperti RLE (Run-Length Encoding). Format ini dapat menyimpan gambar dalam berbagai kedalaman warna, mulai dari hitam-putih hingga 24-bit atau lebih, serta mendukung metadata tambahan seperti profil warna dan saluran alpha untuk transparansi. ", technologies: ["Detail"] },
+                    { title: "Format ICO", image: "img/Y.ico", description: "File ICO adalah format gambar raster yang dirancang untuk menyimpan ikon komputer di sistem operasi Microsoft Windows. File ini dapat berisi satu atau lebih gambar kecil dalam berbagai ukuran dan kedalaman warna, sehingga dapat diskalakan sesuai kebutuhan. Dalam Windows, semua file eksekusi yang menampilkan ikon kepada pengguna, seperti di desktop, menu Start, atau File Explorer, harus menggunakan format ICO. ", technologies: ["Detail"] },
+                    { title: "Format HEIF", image: "img/Y.heif", description: "HEIF adalah format container yang dapat menyimpan satu atau beberapa gambar, termasuk metadata, informasi transparansi, dan bahkan urutan gambar seperti burst atau Live Photos. Format ini didasarkan pada teknologi kompresi video HEVC (High Efficiency Video Coding) atau H.265, yang memungkinkan efisiensi penyimpanan yang lebih baik. ​", technologies: ["Detail"] },
+                ];
+            
+                const projectGrid = document.getElementById('projectGrid');
+                projectGrid.innerHTML = projects.map((project, index) => `
+                    <div class="content-card" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="${index * 100}">
+                        <div class="card-image">
+                            <img src="${project.image}" alt="${project.title}" onclick="openImageModal('${project.image}', event)">
+                        </div>
+                        <div class="card-info">
+                            <h3>${project.title}</h3>
+                            <div class="technologies">
+                                <span class="technology-tag" onclick="toggleProjectDetail(${index})">Detail</span>
+                            </div>
+                            <div id="project-desc-${index}" class="video-description" style="display: none; margin-top: 1rem;">
+                                ${project.description}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }  
+            VanillaTilt.init(document.querySelectorAll(".content-card"), 
+            {
+                max: 10,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.3,
+            }
+        );
+
+            function toggleProjectDetail(index) {
+                const desc = document.getElementById(`project-desc-${index}`);
+                if (desc.style.display === "none") {
+                    desc.style.display = "block";
+                } else {
+                    desc.style.display = "none";
+                }
+            }
+            
+           function openImageModal(src, event) {
+                const modal = document.getElementById("imageModal");
+                const modalImg = document.getElementById("modalImage");
+
+                // Ambil posisi klik / gambar
+                const rect = event.target.getBoundingClientRect();
+                const startX = rect.left + rect.width / 2;
+                const startY = rect.top + rect.height / 2;
+
+                // Reset style
+                modalImg.style.transition = "none";
+                modalImg.style.left = `${startX}px`;
+                modalImg.style.top = `${startY}px`;
+                modalImg.style.transform = "translate(-50%, -50%) scale(0.3)";
+                modalImg.style.opacity = "0";
+
+                // Tampilkan modal
+                modal.style.display = "block";
+                modalImg.src = src;
+
+                // Delay sedikit lalu animasikan ke tengah
+                setTimeout(() => {
+                    modalImg.style.transition = "all 0.4s ease";
+                    modalImg.style.left = "50%";
+                    modalImg.style.top = "50%";
+                    modalImg.style.transform = "translate(-50%, -50%) scale(1)";
+                    modalImg.style.opacity = "1";
+                }, 10);
+            }
+            function closeImageModal() {
+                const modal = document.getElementById("imageModal");
+                const modalImg = document.getElementById("modalImage");
+
+                // Sembunyikan dengan animasi
+                modalImg.style.opacity = "0";
+                modalImg.style.transform = "translate(-50%, -50%) scale(0.3)";
+
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 300);
+            }
+
+            // Fungsi pembantu untuk menghasilkan kartu experience
+            function generateExperienceCards() {
+                const experienceData = [
+                    { title: "Kotak 1", text: "Teks dengan font Arial", font: "Arial" },
+                    { title: "Kotak 2", text: "Teks dengan font Courier New", font: "Courier New" },
+                    { title: "Kotak 3", text: "Teks dengan font Georgia", font: "Georgia" },
+                    { title: "Kotak 4", text: "Teks dengan font Verdana", font: "Verdana" },
+                    { title: "Kotak 5", text: "Teks dengan font Tahoma", font: "Tahoma" },
+                    { title: "Kotak 6", text: "Teks dengan font Trebuchet MS", font: "Trebuchet MS" },
+                    { title: "Kotak 7", text: "Teks dengan font Lucida Console", font: "Lucida Console" },
+                    { title: "Kotak 8", text: "Teks dengan font Impact", font: "Impact" },
+                    { title: "Kotak 9", text: "Teks dengan font Comic Sans MS", font: "Comic Sans MS" },
+                    { title: "Kotak 10", text: "Teks dengan font Times New Roman", font: "Times New Roman" }
+                                // Add more experiences as needed
+                ];
+
+                return experienceData.map(item => `
+                    <div class="content-card" style="font-family: ${item.font};" data-aos="fade-up">
+                        <div class="card-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.text}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Fungsi pembantu untuk menghasilkan kartu client
+            function generateClientCards() {
+                const clients = [
+                    {
+                        name: "Ell Udin",
+                        company: "Innovation Corp",
+                        image: "img/zoro.jpg",
+                        testimonial: "Outstanding work on our company website redesign!"
+                    },
+                    {
+                        name: "Ell Ucup",
+                        company: "Tech Startup",
+                        image: "img/zoro.jpg",
+                        testimonial: "Delivered our app ahead of schedule with excellent quality"
+                    }
+                    // Add more clients as needed
+                ];
+
+                return clients.map(client => `
+                <div class="content-card" data-aos="fade-up">
+                    <div class="card-image">
+                        <img src="${client.image}" alt="${client.name}">
+                    </div>
+                    <div class="card-info">
+                        <h3>${client.name}</h3>
+                        <h4>${client.company}</h4>
+                        <p class="client-testimonial">"${client.testimonial}"</p>
+                    </div>
+                </div>
+            `).join('');
+            }
+
+            // Fungsi pembantu untuk menghasilkan kartu award
+            function generateAwardCards() {
+                return `
+                <div class="content-card" data-aos="fade-up" style="width: 100%;">
+                    <div class="card-info">
+                        <div class="award-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                     <h3>Tugas Laporan UTS </h3>
+                    <p>Lihat dokumen Laporan  dalam format PDF.</p>
+                        <a href="files/LAPORAN UTS.pdf" download="LAPORAN_UTS.pdf" class="download-link">
+                        <i class="fas fa-download"></i> Unduh Laporan UTS (PDF)
+                     </a>
+                    </div>
+                </div>
+            `;
+    
+            }
+
+            
+
+            // Fungsi untuk mengembalikan konten awal
+            function restoreInitialContent() {
+                const aboutContent = document.getElementById('aboutContent');
+                aboutContent.innerHTML = `
+                <div class="about-header" data-aos="fade-down" data-aos-duration="1500">
+                    <h1>About Me</h1>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image" data-aos="fade-right" data-aos-duration="1500">
+                        <img src="img/zoro.jpg" alt="About Image">
+                    </div>
+                    <div class="about-text" data-aos="fade-left" data-aos-duration="1500">
+                        <h2>Who Am I?</h2>
+                        <p>I'm a passionate developer and designer with a keen eye for detail and a drive for creating
+                            innovative digital solutions. With expertise in web development, UI/UX design, and content
+                            creation, I bring ideas to life through code and creativity.</p>
+                        <p>My journey in technology began with a simple curiosity and has evolved into a professional
+                            pursuit of excellence in digital craftsmanship.</p>
+
+                        <div class="stats">
+                            <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200" onclick="showProjects()">
+                                <h3>50+</h3>
+                                <p>Projects Completed</p>
+                            </div>
+                            <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400" onclick="showExperience()">
+                                <h3>3+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                            <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="600" onclick="showClients()">
+                                <h3>20+</h3>
+                                <p>Happy Clients</p>
+                            </div>
+                            <div class="stat-item" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="800" onclick="showAwards()">
+                                <h3>15+</h3>
+                                <p>Awards Won</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+                AOS.refresh();
+                
+            }
+
+        </script>
+</body>
+
+</html>
+
